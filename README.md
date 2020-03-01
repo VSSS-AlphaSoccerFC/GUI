@@ -16,10 +16,10 @@ TKinter graphic interface to display our Game Sate in Live Time
         * **`dashboard.py`** is the frame where the game's data is displayed and the control panel allocated. It contains the following frames:
             * **`team.py`** is the frame where the robots are placed and where a color bar is displayed representing the team's color *(Blue/Orange)*, therefore they are going to be two of them, containing each one 3 of the following frames:
                 * **`robot.py`** is a frame that simulates a flash card composed by:
-                    * **`robot_main_panel`** is the front part of the simulated flash card and it displays the robot's position in rectangular coordinates, it's angle given by the computer vision script, the angle given by the MPU6050 *(Gyroscope/Accelerometer)* only for the allies robots, the player mode *(Goalkeeper/Player)* and it's color.
+                    * **`robot_main_panel`** is the front part of the simulated flash card and it displays the robot's position in rectangular coordinates, it's angle given by the computer vision script, the angle given by the MPU6050 *(Gyroscope/Accelerometer)* only for the allies robots, the player mode *(Goalkeeper/Player)* and it's color represented in a Color Bar.
                     * **`robot_info_panel`** is the back part of the simulated flash card only for the allies robots where it's displayed a general overview of the robot's initial configuration parameters, such as its Alias, IP Address, MAC Address, Server Port and Client Port.
             * **`ball.py`** is the frame where the ball's data given by the computer vision script is displayed such as its position in rectagular coordinates.
-            * **`control_panel.py`** is the frame where the game state can be manipulated, such as start the game, stopped it, end it, etc. And can also control our team's stategies via buttons.
+            * **`control_panel.py`** is the frame where the game state can be manipulated, such as start the game, stop it, end it, etc. And can also control our team's stategies via buttons.
         * **`settings.py`** is the frame where all of initial configuration data can be manipulated such as the Alias, IP Address, MAC Address, Server Port, Client Port, Team Color, Robot Color, Team Number, Player Mode, and more.
 
 <br>
@@ -35,6 +35,9 @@ TKinter graphic interface to display our Game Sate in Live Time
 ## Preview
 
 ![](https://drive.google.com/uc?id=1MrcBCusFpwx9bjcRHtaYPyb2CglUsUf2)
+
+<br>
+
 ![](https://drive.google.com/uc?id=1HL8Q7GyzoswSPQQ2rvAKV_38cBP2c3W3)
 
 ---
