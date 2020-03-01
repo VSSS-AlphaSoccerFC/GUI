@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-class Strategy(ttk.Frame):
+class Control_Panel(ttk.Frame):
     def __init__(self, parent, height, width):
         super().__init__(parent)
 

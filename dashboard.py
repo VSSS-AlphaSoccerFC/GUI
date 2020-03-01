@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from team import Team
 from ball import Ball
-from strategy import Strategy
+from control_panel import Control_Panel
 from PIL import Image, ImageTk
 
 
@@ -47,8 +47,8 @@ class Dashboard(ttk.Frame):
         self.ball = Ball(self, height=height/3, width=width/3)
         self.ball.grid(row=2, column=0, sticky="NSEW")
 
-        self.strategy = Strategy(self, height=height/3, width=2*width/3)
-        self.strategy.grid(row=2, column=1, sticky="NSEW")
+        self.control_panel = Control_Panel(self, height=height/3, width=2*width/3)
+        self.control_panel.grid(row=2, column=1, sticky="NSEW")
 
         # ajustes = ttk.Frame(self, height=height/3, width=width/6, style="BackgroundRED.TFrame")
         # ajustes.grid(row=2, column=2, sticky="NSEW")
