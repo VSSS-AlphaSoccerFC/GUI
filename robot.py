@@ -24,27 +24,26 @@ class Robot(ttk.Frame):
         BACKGROUND_PATH = "Assets/robot_frame.jpg"
         self.BACKGROUND_IMAGE = ImageTk.PhotoImage(Image.open(BACKGROUND_PATH).resize((int(self.width), int(self.height)), Image.ANTIALIAS))
         
-        print(initial_data)
         self.color = initial_data["robot_color"]
-        self.x = tk.StringVar(value="x: 0")
-        self.y = tk.StringVar(value="y: 0")
+        self.team_number = initial_data["team_number"]
+        self.x = tk.StringVar(value="0")
+        self.y = tk.StringVar(value="0")
         self.vision_angle = tk.StringVar(value="0 º")
         self.giroscope_angle = tk.StringVar(value="0 º")
         self.player_mode = initial_data["player_mode"]
-        print()
         self.alias = tk.StringVar(value=initial_data["alias"])
         self.ip_address = tk.StringVar(value=initial_data["ip_address"])
         self.mac_address = tk.StringVar(value=initial_data["mac_address"])
         self.server_port = tk.StringVar(value=initial_data["server_port"])
         self.client_port = tk.StringVar(value=initial_data["client_port"])
 
-        print(f"""
-                ALIAS: {self.alias.get()}
-                IP: {self.ip_address.get()}
-                MAC: {self.mac_address.get()}
-                ServerPort: {self.server_port.get()}
-                ClientePort: {self.client_port.get()}
-            """)
+        # print(f"""
+        #         ALIAS: {self.alias.get()}
+        #         IP: {self.ip_address.get()}
+        #         MAC: {self.mac_address.get()}
+        #         ServerPort: {self.server_port.get()}
+        #         ClientePort: {self.client_port.get()}
+        #     """)
 
         self.frames = {}
 

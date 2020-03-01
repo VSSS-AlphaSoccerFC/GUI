@@ -31,7 +31,6 @@ class Dashboard(ttk.Frame):
         for line in lines[1:]:
             data = line.split(",")
             robot_data = {DATA_HEADERS[x].replace(" ", "").replace("\n", "") : data[x].replace(" ", "").replace("\n", "") for x in range(len(data))}
-            print(robot_data.keys())
             teams[robot_data["team_number"]].append(robot_data)
 
         initial_configuration_file.close()
