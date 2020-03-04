@@ -25,7 +25,7 @@ class Strategy_Panel(ttk.Frame):
         stategy_buttons = {}
         
         for button_num in range(8):
-            IMAGE_BUTTON_PATH = "Assets/btn2.png" if button_num%4 != 1 else "Assets/btn4.png"
+            IMAGE_BUTTON_PATH = "Assets/strategy_button_1.png" if button_num%4 != 1 else "Assets/strategy_button_2.png"
             silver_button_image = ImageTk.PhotoImage(Image.open(IMAGE_BUTTON_PATH).resize((int(.2*self.width), int(.3*self.height)), Image.ANTIALIAS))
 
             stategy_buttons[f"strategy_button_{button_num}"] = tk.Button(
