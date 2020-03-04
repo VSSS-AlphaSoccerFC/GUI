@@ -13,8 +13,12 @@ class Control_Panel(ttk.Frame):
         self["width"] =  self.width
         self["style"] = "BackgroundPURPLE.TFrame"
 
-        BACKGROUND_PATH = "Assets/panel_background.jpg"
+        self.grid_propagate(0) #disables grid shrinking
+
+        BACKGROUND_PATH = "Assets/panel_background_2.jpg"
         background_image = ImageTk.PhotoImage(Image.open(BACKGROUND_PATH).resize((int(self.width), int(self.height)), Image.ANTIALIAS))
         background_label = tk.Label(self, image=background_image)
         background_label.place(x=0, y=0, relwidth=1, relheight=1)
         background_label.image = background_image
+
+        
