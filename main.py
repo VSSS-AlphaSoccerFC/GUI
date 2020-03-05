@@ -82,6 +82,7 @@ class Main(tk.Tk):
         container.columnconfigure(0, weight=1)
 
         self.frames = {}
+        self.is_powered_on = False
 
         settings_frame = Settings(container, self, lambda: self.show_frame(Dashboard), height=SCREEN_HEIGHT, width=SCREEN_WIDTH)
         dashboard_frame = Dashboard(container, self, lambda: self.show_frame(Settings), height=SCREEN_HEIGHT, width=SCREEN_WIDTH)

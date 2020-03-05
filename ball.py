@@ -29,10 +29,10 @@ class Ball(ttk.Frame):
         background_label.image = background_image
 
 
-        ICON_PATH = "Assets/ball_icon.png" 
+        ICON_PATH = "Assets/ball3.png" 
         icon_image = ImageTk.PhotoImage(Image.open(ICON_PATH).resize((int(.25*self.width), int(.775*self.height)), Image.ANTIALIAS))
         self.label_icon = tk.Label(self, image=icon_image, borderwidth=0, highlightthickness=0, padx=0,pady=0)
-        self.label_icon.grid(column=0, row=0, sticky="NSEW", padx=(20,20), pady=(20,10), rowspan=3)
+        self.label_icon.grid(column=0, row=0, sticky="NSEW", padx=(20,20), pady=(15,10), rowspan=3)
         self.label_icon.image = icon_image
             
         label_x_tag = ttk.Label(
