@@ -7,6 +7,8 @@ from dashboard import Dashboard
 import socket
 from threading import Thread
 
+from game import Ball, State, Robot
+
 
 COLOR_PRIMARY = "black"
 COLOR_SECONDARY = "#293846"
@@ -103,24 +105,41 @@ class Main(tk.Tk):
 
         print(SCREEN_HEIGHT, SCREEN_WIDTH)
 
+        self.global_state = State(
+            home_robots=[Robot(rid=0, team=1, color="blue", sock=None, x=0, y=0, yaw=0), Robot(rid=1, team=1, color="green", sock=None, x=0, y=0, yaw=0), Robot(rid=2, team=1, color="red", sock=None, x=0, y=0, yaw=0)],
+            away_robots=[Robot(rid=0, team=2, color="blue", sock=None, x=0, y=0, yaw=0), Robot(rid=1, team=2, color="green", sock=None, x=0, y=0, yaw=0), Robot(rid=2, team=2, color="red", sock=None, x=0, y=0, yaw=0)],
+            ball=Ball()
+            )
 
         self.read_socket = read_socket
 
-        self.data = {"x":17}
+        
 
         self.update()
         
-
        
     def show_frame(self, container):
         frame = self.frames[container]
         frame.tkraise()
 
+
     def update(self):
-        print("update")
-        self.frames[Dashboard].team1.robot1.x.set(self.data['x'])
-        # self.data["x"] += 1
-        self.after(50, self.update)
+        #Team 1
+        self.frames[Dashboard].team1.robot1.x.set(self.global_state.home_robots[0].x)
+        self.frames[Dashboard].team1.robot1.y.set(self.global_state.home_robots[0].y)
+        self.frames[Dashboard].team1.robot1.vision_angle.set(self.global_state.home_robots[0].yaw)
+        
+        #Team 2
+        self.frames[Dashboard].team2.robot1.y.set(self.global_state.away_robots[0].y)
+        self.frames[Dashboard].team2.robot1.x.set(self.global_state.away_robots[0].x)
+
+        #Ball
+        self.frames[Dashboard].ball.x.set(self.global_state.ball.x)
+        self.frames[Dashboard].ball.y.set(self.global_state.ball.y)
+
+        
+        self.after(30, self.update)
+
 
     def listen(self):
         self.read_socket.listen(0)
@@ -131,10 +150,8 @@ class Main(tk.Tk):
                 if len(content) ==0:
                     break
                 else:
-                    #self.game_state.update(content)
-                    self.data["x"] = str(int.from_bytes(content, "big"))
-                    print("new message")
-                    print(str(int.from_bytes(content, "big")))
+                    self.global_state.update(content)
+                    
             client.close()
             
 
@@ -143,7 +160,9 @@ if __name__ == '__main__':
     # Server configuration
     read_socket = socket.socket()
     read_socket.bind(('0.0.0.0', 4000))
+
     root = Main(read_socket)
+
     p = Thread(target=root.listen)
     p.start()
     root.mainloop()
