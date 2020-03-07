@@ -4,7 +4,9 @@ import time
 from random import randint
 
 s = socket.socket()
-s.connect(('192.168.1.72', 4000))
+s.connect(('10.43.44.96', 4000))
+
+delay = 0.05
 
 while True:
     ball = ObjectData()
@@ -13,7 +15,7 @@ while True:
     ball.x = randint(0,1000)
     ball.y = randint(0,1000)
     s.sendall(ball.SerializeToString())
-    time.sleep(.1)
+    time.sleep(delay)
    
     for i in range(6):
         y = ObjectData()
@@ -25,7 +27,7 @@ while True:
         if i > 2:
             y.yaw = randint(0,361)
         print(y.SerializeToString())
-        time.sleep(.1)
+        time.sleep(delay)
         s.sendall(y.SerializeToString())
 
-    time.sleep(.1)
+    time.sleep(delay)
