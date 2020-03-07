@@ -42,8 +42,7 @@ class Dashboard(ttk.Frame):
         self.team2 = Team(self, height=height, width=width, initial_data=teams["team2"])
         self.team2.grid(row=1, column=0, sticky="NSEW", columnspan=3, pady=(0, 15))
 
-        # self.control_panel = ttk.Frame(self, height=height/3, width=width, style = "BackgroundORANGE.TFrame")
-        # self.control_panel.grid(row=2, column=0, sticky="NSEW", columnspan=3)
+
 
         self.ball = Ball(self, height=1*height/6, width=width/3)
         self.ball.grid(row=2, column=0, sticky="NSEW")

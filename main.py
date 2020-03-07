@@ -4,6 +4,9 @@ from team import Team
 from settings import Settings
 from dashboard import Dashboard
 
+import socket
+from threading import Thread
+
 
 COLOR_PRIMARY = "black"
 COLOR_SECONDARY = "#293846"
@@ -14,8 +17,8 @@ COLOR_DARK_TEXT = "#8095a8"
 
 
 class Main(tk.Tk):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, read_socket):
+        super().__init__()
 
         style = ttk.Style()
         style.theme_use("clam")
@@ -100,10 +103,52 @@ class Main(tk.Tk):
 
         print(SCREEN_HEIGHT, SCREEN_WIDTH)
 
+
+        self.read_socket = read_socket
+
+        self.data = {"x":17}
+
+        self.update()
+        
+
        
     def show_frame(self, container):
         frame = self.frames[container]
         frame.tkraise()
 
-root = Main()
-root.mainloop()
+    def update(self):
+        print("update")
+        self.frames[Dashboard].team1.robot1.x.set(self.data['x'])
+        # self.data["x"] += 1
+        self.after(50, self.update)
+
+    def listen(self):
+        self.read_socket.listen(0)
+        while True:
+            client, addr = self.read_socket.accept()
+            while True:
+                content = client.recv(45) # Serialized protobuff data
+                if len(content) ==0:
+                    break
+                else:
+                    #self.game_state.update(content)
+                    self.data["x"] = str(int.from_bytes(content, "big"))
+                    print("new message")
+                    print(str(int.from_bytes(content, "big")))
+            client.close()
+            
+
+
+if __name__ == '__main__':     
+    # Server configuration
+    read_socket = socket.socket()
+    read_socket.bind(('0.0.0.0', 4000))
+    root = Main(read_socket)
+    p = Thread(target=root.listen)
+    p.start()
+    root.mainloop()
+    p.join()
+
+
+
+
