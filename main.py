@@ -128,10 +128,25 @@ class Main(tk.Tk):
         self.frames[Dashboard].team1.robot1.x.set(self.global_state.home_robots[0].x)
         self.frames[Dashboard].team1.robot1.y.set(self.global_state.home_robots[0].y)
         self.frames[Dashboard].team1.robot1.vision_angle.set(self.global_state.home_robots[0].yaw)
+
+        self.frames[Dashboard].team1.robot2.x.set(self.global_state.home_robots[1].x)
+        self.frames[Dashboard].team1.robot2.y.set(self.global_state.home_robots[1].y)
+        self.frames[Dashboard].team1.robot2.vision_angle.set(self.global_state.home_robots[1].yaw)
+
+        self.frames[Dashboard].team1.robot3.x.set(self.global_state.home_robots[2].x)
+        self.frames[Dashboard].team1.robot3.y.set(self.global_state.home_robots[2].y)
+        self.frames[Dashboard].team1.robot3.vision_angle.set(self.global_state.home_robots[2].yaw)
         
         #Team 2
+
         self.frames[Dashboard].team2.robot1.y.set(self.global_state.away_robots[0].y)
         self.frames[Dashboard].team2.robot1.x.set(self.global_state.away_robots[0].x)
+
+        self.frames[Dashboard].team2.robot2.y.set(self.global_state.away_robots[1].y)
+        self.frames[Dashboard].team2.robot2.x.set(self.global_state.away_robots[1].x)
+
+        self.frames[Dashboard].team2.robot3.y.set(self.global_state.away_robots[2].y)
+        self.frames[Dashboard].team2.robot3.x.set(self.global_state.away_robots[2].x)
 
         #Ball
         self.frames[Dashboard].ball.x.set(self.global_state.ball.x)

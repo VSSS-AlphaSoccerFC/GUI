@@ -11,7 +11,7 @@ class Robot:
         self.yaw = yaw
         self.socket = sock
     
-    def set_socket(sock):
+    def set_socket(self, sock):
         self.socket = sock
 
 

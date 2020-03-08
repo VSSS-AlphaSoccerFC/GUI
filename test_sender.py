@@ -4,9 +4,9 @@ import time
 from random import randint
 
 s = socket.socket()
-s.connect(('10.43.44.96', 4000))
+s.connect(('192.168.0.17', 4000))
 
-delay = 0.05
+delay = 0.0002
 
 while True:
     ball = ObjectData()
